@@ -3,11 +3,49 @@ var rotateIcons = document.getElementById('rot-icons');
 var clickRotateDiv = document.getElementById('click-rot');
 var angle = 0;
 
+  //*************************************************************************** */
+
+const reproductor = document.getElementById("reproductor");
+const cambiarMusicaBoton = document.getElementById("rot-icons");
+const reproducirPausarMusicaBoton = document.getElementById("pow-on");
+const canciones = [
+  "https://www.chosic.com/wp-content/uploads/2022/05/sb_adriftamonginfinitestars(chosic.com).mp3",
+  "https://www.chosic.com/wp-content/uploads/2022/03/alex-productions-ambient-music-nature(chosic.com).mp3",
+  "https://www.chosic.com/wp-content/uploads/2022/01/09-Meydan-Contemplate-the-stars(chosic.com).mp3",
+  "https://www.chosic.com/wp-content/uploads/2022/05/sb_aurora(chosic.com).mp3",
+  "https://www.chosic.com/wp-content/uploads/2022/01/Crescent-Moon(chosic.com).mp3",
+  "https://www.chosic.com/wp-content/uploads/2022/04/Arnor(chosic.com).mp3"
+];
+let cancionActual = 0;
+let reproduciendo = false;
+cambiarMusicaBoton.addEventListener("click", function() {
+  
+  cancionActual = (cancionActual + 1) % canciones.length;
+  reproductor.src = canciones[cancionActual];
+  reproductor.load();
+  if (reproduciendo) {
+    reproductor.play();
+  }
+});
+reproducirPausarMusicaBoton.addEventListener("click", function() {
+  if (reproduciendo) {
+    reproductor.pause();
+    reproduciendo = false;
+  } else {
+    reproductor.play();
+    reproduciendo = true;
+  }
+});
+
+  //*************************************************************************** */
+
 clickRotateDiv.onclick = function() {
   angle += 60;
   rotateDiv.style.transform = 'rotate(' + angle + 'deg)';
   rotateIcons.style.transform = 'rotate(' + angle + 'deg)';
 };
+
+
 
 var step = 2;
 var color1 = 'rgba(0,0,0,0.5)';

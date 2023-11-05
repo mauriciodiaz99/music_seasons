@@ -34,6 +34,10 @@ body {
     height: 100vh;
 }
 
+#reproductor {
+    display: none;
+}
+
 .outer-rim,
 .outer-rim *{
     position: absolute;
